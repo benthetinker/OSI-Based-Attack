@@ -1,0 +1,39 @@
+💻 Layer 7 (Application Layer) – Command and Control via HTTP (Beaconing)
+
+🎯 Goal: Detect if HTTP traffic is being used to maintain an external connection (C2)
+
+🔎 Wireshark Steps:
+Filter: http.request or dns.qry.name
+Look for:
+  -Periodic connections to same external domain (**can use statistic conversation or IO graph to spot the suspicious outbound traffic**)
+  -URIs with suspicious strings (e.g., encoded payloads, random characters)
+  -HTTP POSTs with unknown content-type or base64 blobs
+  -Suspicious URI/Domain (**VirusTotal website to confirm**)
+  -Suspicious user agent (**User Parse a user agent website to confirm**)
+
+Malware authors often:
+✅ Use weird, fake, or outdated User-Agents
+✅ Use hardcoded User-Agents (same across victims)
+✅ Try to imitate browsers poorly
+🔍 Suspicious examples:
+  -Microsoft WebDAV 1.0
+  -python-requests/2.27.1
+  -botnet-client
+  -curl/7.35.0 (used in basic scripts)
+  -Missing or empty User-Agent
+
+🧠 Analyst Mindset:
+-"Is this normal browser behavior or malware beaconing?"
+-"Does this host communicate regularly to a low-reputation domain?"
+
+📷 Tip: Extract the full TCP stream and analyze for payloads or encoded indicators
+
+
+**🛠️ Corrective / Preventive Actions:**
+
+| Type              | Action                                                         |
+|-------------------|----------------------------------------------------------------|
+| Short-term Fix    | Block domain/IP at DNS or proxy level                          |
+| Monitoring        | Use behavioral analytic (e.g. SIEM alerts for beacon timing)   |
+| Policy & Training | Educate users on phising vectors that enable initial infection |
+| Long-term         | Implement EDR and sandbox inspection for outbound behavior     |
