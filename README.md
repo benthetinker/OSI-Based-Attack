@@ -9,3 +9,9 @@
 | 5. Session      | Session hijack, replay attack     | `tcp.analysis.retransmission`               | Unusual session replays or re-sent ACKs                 |
 | 6. Presentation | TLS downgrade, malformed encoding | `ssl`, `x.509`, `http contains "gzip"`      | Invalid certs, protocol downgrade from HTTPS            |
 | 7. Application  | SQLi, XSS, C2 via HTTP            | `http.request`, `dns.qry.name`              | Suspicious URIs, encoded payloads, uncommon user-agents |
+
+
+
+Reference:
+1. https://unit42.paloaltonetworks.com/wireshark-tutorial-emotet-infection/
+2. https://tryhackme.com/room/wiresharktrafficanalysis
