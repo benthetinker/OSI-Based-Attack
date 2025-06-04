@@ -28,7 +28,9 @@ Malware authors often:
 
 📷 Tip: Extract the full TCP stream and analyze for payloads or encoded indicators
 
-Example: Emotet C2 Attack [![Click to enlarge](./emotet.jpeg)](./emotet.jpeg)
+
+Example: Emotet C2 Attack  
+[![Click to enlarge](./emotet.jpeg)](./emotet.jpeg)
   1. short POST URLs is suspicious (Looks like a malware randomly generates paths to evade static dection)
   2. Post Request through URL-encoded format (Content-Type: application/X-www-form-urlencoded): the payload is likely Base64-encoded that serves to exfiltrates victim data or sending a beacon to C2 server. Evade detection in plain text fields.
   3. Response marked Content-Type: text/html but returns unreadable binary: most likely a C2 command that disguised under a legitimate MIME type to bypass content filters.
