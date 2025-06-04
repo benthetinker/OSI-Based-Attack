@@ -1,1 +1,1 @@
-This files shows the attack related to OSI model layer 2 Data Link Layer
+This files shows the common attacks related to OSI model layer
